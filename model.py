@@ -11,8 +11,8 @@ from sklearn.metrics import classification_report, confusion_matrix, precision_r
 
 print("TensorFlow versão:", tf.__version__)
 
-train_dataset_path = '/workspace/datasets/Dataset/Train'
-dataset_path = '/workspace/datasets/Dataset/Validation'
+train_dataset_path = '/workspace/datasets/Complete/Train'
+dataset_path = '/workspace/datasets/Complete/Validation'
 
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
     train_dataset_path,
