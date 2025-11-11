@@ -115,11 +115,12 @@ Hyperparameters (final run):
 ```
 .
 ├── datasets/
-│   ├── Complete/Train/
+│   ├── Complete/Train/ ##not provided
 │   ├── Complete/Validation/
 │   ├── mini-dataset/
 ├── models/
-│   └── efficientnetb0_finetuned_full.h5
+│   └── patience-5/models
+│   └── patience-10/models
 ├── model.py
 ├── gpu.py
 ├── README.md
@@ -132,11 +133,11 @@ Hyperparameters (final run):
 
 ```python
 # Save
-model.save("models/efficientnetb0_finetuned_full.h5")
+model.save("models/patience-{number}/model")
 
 # Load
 from tensorflow.keras.models import load_model
-model = load_model("models/efficientnetb0_finetuned_full.h5")
+model = load_model("models/patience-{number}/model")
 ```
 
 ---
@@ -281,7 +282,9 @@ docker run --gpus all -it --rm   --shm-size=1g   --ulimit memlock=-1   --ulimit 
 
 ```bash
 cd /workspace (if necessary)
-python model.py
+python model.py (to training)
+python validate_model.py (to validate the validation dataset)
+python validate_image.py (to detect if one image is Deepfake)
 ```
 
 Replace `model.py` with your training script filename.
